@@ -9,7 +9,7 @@ app = Flask(__name__)
 def index():
     """Return homepage."""
     # TODO: Extract the query term from url using request.args.get()
-    query = request.args.get('query')
+    query = request.args.get('search')
     # TODO: Make 'params' dictionary containing:
     # a) the query term, 'q'
     # b) your API key, 'key'
@@ -18,7 +18,7 @@ def index():
 
         "q": query,
 
-        "apikey": "8LOGBZT09G1P",
+        "apikey": "TUIS0GU7RSXX",
 
         "limit": 9,
     }
@@ -26,16 +26,14 @@ def index():
     # TODO: Make an API call to Tenor using the 'requests' library. For
     # reference on how to use Tenor, see:
     # https://tenor.com/gifapi/documentation
-    r = requests.get("https://api.tenor.com/v1/search" , params = params)
-
-
+    r = requests.get("https://api.tenor.com/v1/search", params=params)
 
     # TODO: Use the '.json()' function to get the JSON of the returned response
     if r.status_code == 200:
-    # load the GIFs using the urls for the smaller GIF sizes
+        # load the GIFs using the urls for the smaller GIF sizes
         top_9gifs = json.loads(r.content)
-    # TODO: Using dictionary notation, get the 'results' field of the JSON,
-    # which contains the GIFs as a list
+        # TODO: Using dictionary notation, get the 'results' field of the JSON,
+        # which contains the GIFs as a list
         top_9gifs = top_9gifs["results"]
     else:
         top_9gifs = None
@@ -46,27 +44,6 @@ def index():
     # named parameter called 'gifs'
 
     return render_template("index.html", gifs = top_9gifs)
-
-@app.route("/search-result")
-def search_results():
-    query = request.args.get('search')
-    search = {
-        "q": query,
-
-        "apikey": "8LOGBZT09G1P",
-
-        "limit": 9,
-    }
-
-    r = requests.get("https://api.tenor.com/v1/search", params = search)
-
-    if r.status_code == 200:
-        search_result = json.loads(r.content)
-        search_result = search_result["results"]
-    else:
-        search_result = None
-
-    return render_template("index.html", gifs = search_result)
 
 if __name__ == '__main__':
     app.run(debug = True)
