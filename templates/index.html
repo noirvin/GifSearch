@@ -21,10 +21,13 @@
     <h1>{{ search }}</h1>
 
 <!-- TODO: Make a for loop to loop over GIFs passed in from the server -->
-    {% for gif in gifs %}
+    <div class="row">
+        {% for gif in gifs %}
 
-<!-- TODO: For each gif, include the 'gif.html' template to display it -->
-        {% include 'gif.html' %}
-    {% endfor %}
-
+    <!-- TODO: For each gif, include the 'gif.html' template to display it -->
+        <div class="col-sm-4">
+            {% include 'gif.html' %}
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}

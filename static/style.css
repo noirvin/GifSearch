@@ -1,8 +1,21 @@
-.tenor-gif-embed {
-    margin-left: auto:
-    margin-right: auto:
 
+h1 {
+    text-align: center;
+    font-family: fantasy;
+    color: #edb9db;
 }
-body {
-    background-color: #00000;
+button{
+    text-align: center;
+    font-family: cursive;
+    color: blue;
+}
+input{
+
+    text-align: center;
+    font-family: sans-serif;
+    background-color: pink;
+}
+form{
+
+    align-self: center;
 }
