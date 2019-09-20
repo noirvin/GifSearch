@@ -8,9 +8,9 @@
 <!-- TODO: Make an HTML form containing a search box and a submit button to add
     the search term to the query string. The form should have a target of '/' to
     send us to the same route. -->
-    <form action="/submit">
+    <form action="/search-result">
         <input type="text" name="search" placeholder="Find cool Gifs"/>
-        <button type="submit">Submit</button>
+        <button type="submit" method="POST">Submit</button>
     </form>
     <h1>{{ search }}</h1>
 
